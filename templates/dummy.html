@@ -1,0 +1,91 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+{% block title %}
+    <title>Hello, world!</title>
+{% endblock %}
+<style>
+  .log
+  {
+    margin-left: 900px !important;
+  }
+  .hom
+  {
+    margin-left: 50px;
+  }
+  body
+  {
+    background-color: lightblue;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+  }
+  
+</style>
+  </head>
+  <body style="background-image: url('{% static 'images/img4.jpg' %}');">
+
+<center>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-danger">
+  <!-- Container wrapper -->
+  <div class="collapse navbar-collapse" >
+    <ul class="navbar-nav me-3 mb-1 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link text-white hom" href="{% url 'home' %}">Home</a>
+      </li>
+    </ul>
+  
+      <!-- Left links -->
+      <ul class="navbar-nav me-3 mb-1 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'admin:index' %}">Admin page</a>
+        </li>
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav me-2 mb-1 mb-lg-0">
+        <li class="nav-item">
+          <a href="{% url 'display_profile' %}" class="nav-link text-white">Display profile</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-auto mb-1 mb-lg-0">
+        <li class="nav-item">
+          <a href="{% url 'change_password' %}" class="nav-link text-white">Change password</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav me-5 mb-2 mb-lg-0 ">
+        <li class="nav-item">
+          <a href="{% url 'user_logout' %}" class="nav-link text-primary border border-white rounded bg-white">Logout</a>
+        </li>
+      </ul>
+    
+      {% else %} 
+
+      <div class="d-flex ">
+        
+        <a href="{% url 'user_login' %}" class="nav-link  ms-5 fs-6 text-danger border border-white rounded-0 bg-white log p-2">Login</a>
+        
+        <a href="{% url 'registration' %}" class="nav-link  ms-5 fs-6 text-danger border border-white rounded-0 bg-white reg p-2">Register for free</a>
+        {% endif %}
+      </div>
+    </div>
+    <!-- Collapsible wrapper -->
+
+  <!-- Container wrapper -->
+</nav>
+
+
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+{% block body_block %}
+{% endblock %}
+
+</center>
+  </body>
+</html>
